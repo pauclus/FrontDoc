@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import cursoReducer from '../slices/cursoSlice'
 
 // Reducer dummy básico
 const dummyReducer = (state = {}, action) => {
@@ -7,6 +8,6 @@ const dummyReducer = (state = {}, action) => {
 
 export const store = configureStore({
     reducer: {
-        dummy: dummyReducer,
+        curso: cursoReducer,
     },
 })

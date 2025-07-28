@@ -9,8 +9,8 @@ export const AppRouter =()=>{
             
             <Route path="/dashboard" element={<DashboardLayout/>}/>
             <Route path="/parteI/*" element={<EspecialRoutes/>}/>
-        {/* Redirigir cualquier ruta no encontrada al dashboard */}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+            <Route path="*" element={<Navigate to="/dashboard" />} />
+
 
         </Routes>)
 

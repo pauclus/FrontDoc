@@ -102,7 +102,7 @@ export const DashboardLayout = () => {
           }
       </div>
       {/* Contenido principal */}
-      <div style={{ flex: '1', padding: '20px',  display: 'flex', justifyContent: 'center' }}>
+      <div style={{ flex: '1', padding: ' 1px',  display: 'flex', justifyContent: 'center' }}>
         <Outlet 
         style={{width: '100%', height: '100%', display: 'flex', flex: '1'}}
         />
