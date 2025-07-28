@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { silaboService } from '../services/silaboService';
 
 export const Crear = ()=>{
+    const curso=useSelector((state)=>state.cursoSeleccionado)
 
     return (
         <div style={{flex: '1'}}>
@@ -32,7 +33,7 @@ export const Crear = ()=>{
                     </div>
                     <Button variant="contained" color="primary"
                     onClick={()=>{
-                        const curso=useSelector((state)=>state.cursoSeleccionado)
+                        console.log()
                         if(curso.id){
                             console.log('Curso existe')
                             silaboService.crearSilabo(curso.id);
