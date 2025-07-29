@@ -10,6 +10,7 @@ export const cursoSlice = createSlice({
     initialState,
     reducers: {
         setCursoSeleccionado: (state, action) => {
+            console.log('Reducing: ', action.payload);
             state.cursoSeleccionado = action.payload;
         },
         setBusqueda: (state, action) => {

@@ -1,11 +1,12 @@
 export const silaboService = {
 
-    crearSilabo: async (cursoId)=>{
-        const response = await fetch(`http://localhost:8080/silabo/Crear/${cursoId}`,{
+    crearSilabo: async (silabo)=>{
+        const response = await fetch(`http://localhost:8080/silabo/Crear`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(silabo)
         });
     },
 
