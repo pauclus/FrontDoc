@@ -11,8 +11,12 @@ export default function Buscador({titulo='TITULO'}) {
     const dispatch = useDispatch();
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
+    const curso= useSelector((state)=> state.curso.CursoSeleccionado)
 
     useEffect(() => {
+        if (curso) {
+            console.log('Curso seleccionado:', curso);
+        }
         if(inputValue.length >= 2){
             try{	
             const buscarCursos = async () => {
@@ -28,7 +32,7 @@ export default function Buscador({titulo='TITULO'}) {
             console.error('Error al buscar cursos:', error);
         }
         }
-    }, [inputValue]);
+    }, [inputValue, curso]);
 
     return (
         <Autocomplete

@@ -5,6 +5,8 @@ import { silaboService } from '../services/silaboService';
 
 export const Crear = ()=>{
 
+    const curso=useSelector((state)=>state.curso.cursoSeleccionado)
+
     return (
         <div style={{flex: '1'}}>
             <span style={{flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
@@ -32,10 +34,10 @@ export const Crear = ()=>{
                     </div>
                     <Button variant="contained" color="primary"
                     onClick={()=>{
-                        const curso=useSelector((state)=>state.cursoSeleccionado)
+                        console.log(curso)
                         if(curso.id){
                             console.log('Curso existe')
-                            silaboService.crearSilabo(curso.id);
+                            silaboService.crearSilabo({cursoid: curso.id});
                             console.log('Creando Silabo para {}', curso.nombre );
                         }
                         else{console.log('algo {}', curso.id)}

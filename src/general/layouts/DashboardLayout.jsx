@@ -36,9 +36,16 @@ export const DashboardLayout = () => {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
-      <div style={{ width: '270px', backgroundColor: '#2c3e50', color: 'white', padding: '20px 0', height: '100vh' }}>
-          <div style={{ padding: '0 20px', marginBottom: '20px' }}>
+    <div style={{ display: 'flex', minHeight: '100%', fontFamily: 'Arial, sans-serif' }}>
+<div style={{
+  width: '270px',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: '#2c3e50',
+  color: 'white',
+  padding: '20px 0',
+  alignSelf: 'stretch'
+}}>          <div style={{ padding: '0 20px', marginBottom: '20px' }}>
             <h2 style={{ margin: 0, fontSize: '1.5rem', color: '#ecf0f1' }}>Menú</h2>
           </div>
           {menus.map(menu=>
