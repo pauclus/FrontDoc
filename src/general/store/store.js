@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import cursoReducer from '../slices/cursoSlice'
+import hierbaReducer from '../slices/hierbaSlice'
 
 // Reducer dummy básico
 const dummyReducer = (state = {}, action) => {
@@ -15,7 +15,7 @@ const loggerMiddleware = (storeAPI) => (next) => (action) => {
 
 export const store = configureStore({
     reducer: {
-        curso: cursoReducer,
+        hierba: hierbaReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(loggerMiddleware),

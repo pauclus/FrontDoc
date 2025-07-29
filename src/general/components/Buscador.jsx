@@ -1,9 +1,9 @@
 import { TextField, Autocomplete, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCursoSeleccionado } from '../slices/cursoSlice'
+import { setHierbaSeleccionado } from '../slices/hierbaSlice'
 
 import { useState, useEffect} from 'react';
-import { cursoService } from '../services/cursoService';
+import { hierbaService } from '../services/hierbaService';
 
 
 export default function Buscador({titulo='TITULO'}) {
@@ -11,28 +11,28 @@ export default function Buscador({titulo='TITULO'}) {
     const dispatch = useDispatch();
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const curso= useSelector((state)=> state.curso.CursoSeleccionado)
+    const hierba= useSelector((state)=> state.hierba.HierbaSeleccionado)
 
     useEffect(() => {
-        if (curso) {
-            console.log('Curso seleccionado:', curso);
+        if (hierba) {
+            console.log('Hierba seleccionada:', hierba);
         }
         if(inputValue.length >= 2){
             try{	
-            const buscarCursos = async () => {
-                const response = await cursoService.buscarCursos(inputValue);
+            const buscarHierbas = async () => {
+                const response = await hierbaService.buscarHierbas(inputValue);
                 if (Array.isArray(response)) {
                     setOptions(response);
                   } else {
                     setOptions([]); // fallback seguro
                   }
             }
-            buscarCursos();
+            buscarHierbas();
         } catch (error) {
-            console.error('Error al buscar cursos:', error);
+            console.error('Error al buscar hierbas:', error);
         }
         }
-    }, [inputValue, curso]);
+    }, [inputValue, hierba]);
 
     return (
         <Autocomplete
@@ -45,7 +45,7 @@ export default function Buscador({titulo='TITULO'}) {
             onInputChange={(event, value) => {setInputValue(value)}}
             getOptionLabel={(option) => option.nombre}
             onChange={(event, value) => {
-                dispatch(setCursoSeleccionado(value));
+                dispatch(setHierbaSeleccionado(value));
             }}
             sx={{width: '50%'}}
         />

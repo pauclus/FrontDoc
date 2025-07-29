@@ -5,7 +5,7 @@ import { silaboService } from '../services/silaboService';
 
 export const Crear = ()=>{
 
-    const curso=useSelector((state)=>state.curso.cursoSeleccionado)
+    const hierba=useSelector((state)=>state.hierba.hierbaSeleccionado)
 
     return (
         <div style={{flex: '1'}}>
