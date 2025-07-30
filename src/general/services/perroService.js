@@ -18,5 +18,18 @@ buscarPerros: async ({ nombre, dueñoId, raza, edad, color, comportamiento, tama
     if (!response.ok) throw new Error('Error al buscar perros');
 
     return await response.json();
-}
+},
+    /**
+     * Crea un nuevo perro y lo asocia a un usuario como dueño principal
+     */
+    crearPerro: async (perro, idUsuario)=>{
+        const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}api/perros/crear?idUsuario=${idUsuario}`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(perro)
+        });
+    },
+
 }

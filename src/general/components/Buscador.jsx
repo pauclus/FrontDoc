@@ -1,6 +1,6 @@
 import { TextField, Autocomplete, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCursoSeleccionado } from '../slices/perroSlice'
+import { setPerroSeleccionado } from '../slices/perroSlice'
 
 import { useState, useEffect} from 'react';
 import { perroService } from '../services/perroService';
@@ -11,7 +11,7 @@ export default function Buscador({titulo='TITULO'}) {
     const dispatch = useDispatch();
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const perro= useSelector((state)=> state.curso.CursoSeleccionado)
+    const perro= useSelector((state)=> state.perro.perroSeleccionado)
 
     useEffect(() => {
         if (perro) {
@@ -45,7 +45,7 @@ export default function Buscador({titulo='TITULO'}) {
             onInputChange={(event, value) => {setInputValue(value)}}
             getOptionLabel={(option) => option.nombre}
             onChange={(event, value) => {
-                dispatch(setCursoSeleccionado(value));
+                dispatch(setPerroSeleccionado(value));
             }}
             sx={{width: '50%'}}
         />

@@ -1,27 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    cursoSeleccionado: null,
+    perroSeleccionado: null,
     busqueda: ''
 }
 
-export const cursoSlice = createSlice({
+export const perroSlice = createSlice({
     name: 'curso',
     initialState,
     reducers: {
-        setCursoSeleccionado: (state, action) => {
+        setPerroSeleccionado: (state, action) => {
             console.log('Reducing: ', action.payload);
-            state.cursoSeleccionado = action.payload;
+            state.perroSeleccionado = action.payload;
         },
         setBusqueda: (state, action) => {
             state.busqueda = action.payload;
         },
-        clearCursoSeleccionado: (state) => {
-            state.cursoSeleccionado = null;
+        clearBusqueda: (state) => {
+            state.perroSeleccionado = null;
             state.busqueda = '';
-        }
+        },
+
     }
 })
 
-export const { setCursoSeleccionado, setBusqueda, clearCursoSeleccionado } = cursoSlice.actions;
-export default cursoSlice.reducer;
+export const { setPerroSeleccionado: setPerroSeleccionado, setBusqueda, clearBusqueda: clearCursoSeleccionado } = perroSlice.actions;
+export default perroSlice.reducer;
