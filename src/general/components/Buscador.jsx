@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCursoSeleccionado } from '../slices/cursoSlice'
 
 import { useState, useEffect} from 'react';
-import { cursoService } from '../services/cursoService';
+import { perroService } from '../services/perroService';
 
 
 export default function Buscador({titulo='TITULO'}) {
@@ -20,7 +20,7 @@ export default function Buscador({titulo='TITULO'}) {
         if(inputValue.length >= 2){
             try{	
             const buscarCursos = async () => {
-                const response = await cursoService.buscarCursos(inputValue);
+                const response = await perroService.buscarCursos(inputValue);
                 if (Array.isArray(response)) {
                     setOptions(response);
                   } else {

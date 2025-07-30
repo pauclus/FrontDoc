@@ -1,16 +1,16 @@
 import {Routes, Route} from 'react-router-dom'
-import {Crear} from '../pages/Crear'
-import {Imprimir} from '../pages/Imprimir'
-import {Modificar} from '../pages/Modificar'
+import {Registrar} from '../pages/Registrar'
+import {Notificaciones} from '../pages/Notificaciones'
+import {Detalles} from '../pages/Detalles'
 import {DashboardLayout} from '../../general/layouts/DashboardLayout'
 export const EspecialRoutes = ()=>{
 
     return (
     <Routes>
         <Route element={<DashboardLayout/>}>
-            <Route path="Creacion" element={<Crear/>} />
-            <Route path="Modificacion" element={<Modificar/>} />
-            <Route path="Descarga" element={<Imprimir/>} />
+            <Route path="Registro" element={<Registrar/>} />
+            <Route path="Detalles" element={<Detalles/>} />
+            <Route path="Notificaciones" element={<Notificaciones/>} />
         </Route>
     </Routes>
     )

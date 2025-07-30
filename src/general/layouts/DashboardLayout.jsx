@@ -14,9 +14,9 @@ export const DashboardLayout = () => {
       id: 'Silabo',
       title: 'Parte I',
       items: [
-        { id: 'Creacion', label: 'Creacion de Silabo' },
-        { id: 'Modificacion', label: 'Modificacion de Silabo' },
-        { id: 'Descarga', label: 'Descarga de Silabo' },
+        { id: 'Registro', label: 'Registro de Perros' },
+        { id: 'Detalles', label: 'Detalles de Perros' },
+        { id: 'Notificaciones', label: 'Notificaciones' },
       ]
     },
     {
