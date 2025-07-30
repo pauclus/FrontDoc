@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import cursoReducer from '../slices/cursoSlice'
+import cursoReducer from '../slices/perroSlice'
 
 // Reducer dummy básico
 const dummyReducer = (state = {}, action) => {

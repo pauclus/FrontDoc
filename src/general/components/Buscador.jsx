@@ -1,6 +1,6 @@
 import { TextField, Autocomplete, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCursoSeleccionado } from '../slices/cursoSlice'
+import { setCursoSeleccionado } from '../slices/perroSlice'
 
 import { useState, useEffect} from 'react';
 import { perroService } from '../services/perroService';
@@ -11,16 +11,16 @@ export default function Buscador({titulo='TITULO'}) {
     const dispatch = useDispatch();
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const curso= useSelector((state)=> state.curso.CursoSeleccionado)
+    const perro= useSelector((state)=> state.curso.CursoSeleccionado)
 
     useEffect(() => {
-        if (curso) {
-            console.log('Curso seleccionado:', curso);
+        if (perro) {
+            console.log('Perro seleccionado:', perro);
         }
         if(inputValue.length >= 2){
             try{	
             const buscarCursos = async () => {
-                const response = await perroService.buscarCursos(inputValue);
+                const response = await perroService.buscarPerros(inputValue);
                 if (Array.isArray(response)) {
                     setOptions(response);
                   } else {
@@ -32,7 +32,7 @@ export default function Buscador({titulo='TITULO'}) {
             console.error('Error al buscar cursos:', error);
         }
         }
-    }, [inputValue, curso]);
+    }, [inputValue, perro]);
 
     return (
         <Autocomplete
@@ -40,7 +40,7 @@ export default function Buscador({titulo='TITULO'}) {
             renderInput={(params) => 
             <div>
                 <Typography variant="h6">{titulo}</Typography>
-                <TextField {...params}  placeholder='Selecciona el tipo' />
+                <TextField {...params}  placeholder='Nombre del Perro' />
                 </div>}
             onInputChange={(event, value) => {setInputValue(value)}}
             getOptionLabel={(option) => option.nombre}
