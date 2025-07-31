@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: shadow,
 });
 
-export const Usuarios = () => {
+export const Propietarios = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',

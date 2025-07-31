@@ -17,7 +17,7 @@ export const DashboardLayout = () => {
         { id: 'Registro', label: 'Registro de Perros' },
         { id: 'Detalles', label: 'Detalles de Perros' },
         { id: 'Notificaciones', label: 'Notificaciones' },
-        { id: 'Usuarios', label: 'Usuarios' },
+        { id: 'Propietarios', label: 'Propietarios' },
       ]
     },
     {

@@ -1,4 +1,8 @@
+
+const baseUrl = import.meta.env.VITE_APP_BACKEND_URL;
+
 export const perroService = {
+
 
 buscarPerros: async ({ nombre, dueñoId, raza, edad, color, comportamiento, tamaño, ubicacion }) => {
     const params = new URLSearchParams();
@@ -12,7 +16,7 @@ buscarPerros: async ({ nombre, dueñoId, raza, edad, color, comportamiento, tama
     if (tamaño) params.append('tamaño', tamaño);
     if (ubicacion) params.append('ubicacion', ubicacion);
 
-    const url = `${import.meta.env.VITE_APP_BACKEND_URL}api/perros/buscar?${params.toString()}`;
+    const url = `${baseUrl}api/perros/buscar?${params.toString()}`;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error('Error al buscar perros');
@@ -23,7 +27,7 @@ buscarPerros: async ({ nombre, dueñoId, raza, edad, color, comportamiento, tama
      * Crea un nuevo perro y lo asocia a un usuario como dueño principal
      */
     crearPerro: async (perro, idUsuario)=>{
-        const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}api/perros/crear?idUsuario=${idUsuario}`,{
+        const response = await fetch(`${baseUrl}api/perros/crear?idUsuario=${idUsuario}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

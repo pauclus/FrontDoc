@@ -26,7 +26,7 @@ function LocationMarker({ onChange }) {
         setPosition(e.latlng);
         onChange(e.latlng);
       } else {
-        alert('Ubicación fuera del área permitida (3.7 km)');
+        alert('Ubicación fuera del área permitida');
       }
     },
   });
