@@ -12,7 +12,7 @@ export const DashboardLayout = () => {
   const menus = [
     {
       id: 'Silabo',
-      title: 'Parte I',
+      title: 'Administrador',
       items: [
         { id: 'Registro', label: 'Registro de Perros' },
         { id: 'Detalles', label: 'Detalles de Perros' },
@@ -22,11 +22,10 @@ export const DashboardLayout = () => {
     },
     {
       id: 'Docente',
-      title: 'Parte II',
+      title: ' Externo',
       items: [
-        { id: 'Carga', label: 'Carga de Alumnos' },
-        { id: 'Grupos', label: 'Grupos de Curso' },
-        { id: 'Notas', label: 'Notas de Alumnos' },
+        { id: 'Datos', label: 'Datos de Perros' },
+        { id: 'Ubicacion', label: 'Ubicacion de Perros' },
       ]
     }
     
@@ -38,15 +37,12 @@ export const DashboardLayout = () => {
 
   return (
     <div style={{ display: 'flex', minHeight: '100%', fontFamily: 'Arial, sans-serif' }}>
-<div style={{
-  width: '270px',
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor: '#2c3e50',
-  color: 'white',
-  padding: '20px 0',
-  alignSelf: 'stretch'
-}}>          <div style={{ padding: '0 20px', marginBottom: '20px' }}>
+      <div style={{width: '270px',
+        display: 'flex', flexDirection: 'column',
+        backgroundColor: '#2c3e50', color: 'white',
+        padding: '20px 0',alignSelf: 'stretch'
+      }}>          
+        <div style={{ padding: '0 20px', marginBottom: '20px' }}>
             <h2 style={{ margin: 0, fontSize: '1.5rem', color: '#ecf0f1' }}>Menú</h2>
           </div>
           {menus.map(menu=>

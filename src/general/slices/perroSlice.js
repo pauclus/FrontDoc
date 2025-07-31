@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     perroSeleccionado: null,
-    busqueda: ''
+    busqueda: null,
 }
 
 export const perroSlice = createSlice({
@@ -18,7 +18,7 @@ export const perroSlice = createSlice({
         },
         clearBusqueda: (state) => {
             state.perroSeleccionado = null;
-            state.busqueda = '';
+            state.busqueda = null;
         },
 
     }

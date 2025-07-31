@@ -1,53 +1,57 @@
 import { TextField, Autocomplete, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPerroSeleccionado } from '../slices/perroSlice'
+import { setPerroSeleccionado, setBusqueda } from '../slices/perroSlice';
 
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { perroService } from '../services/perroService';
 
-
-export default function Buscador({titulo='TITULO'}) {
-    const [binar, SetBinar] = useState(false);
+export default function Buscador({ titulo = 'TITULO', onBuscar }) {
     const dispatch = useDispatch();
     const [options, setOptions] = useState([]);
-    const [inputValue, setInputValue] = useState('');
-    const perro= useSelector((state)=> state.perro.perroSeleccionado)
+    const [inputValue, setInputValue] = useState({ nombre: '' });
+    const perro = useSelector((state) => state.perro.perroSeleccionado);
 
     useEffect(() => {
-        if (perro) {
-            console.log('Perro seleccionado:', perro);
-        }
-        if(inputValue.length >= 2){
-            try{	
-            const buscarCursos = async () => {
-                const response = await perroService.buscarPerros(inputValue);
-                if (Array.isArray(response)) {
-                    setOptions(response);
-                  } else {
-                    setOptions([]); // fallback seguro
-                  }
+        if (!inputValue?.nombre || inputValue.nombre.length < 2) return;
+
+        const buscarPerros = async () => {
+            try {
+                // Si se proporciona onBuscar, usarla
+                if (onBuscar) {
+                    onBuscar(inputValue.nombre);
+                    //return;
+                }
+
+                // Comportamiento original
+            const response = await perroService.buscarPerros(inputValue);
+            setOptions(Array.isArray(response) ? response : []);
+            dispatch(setBusqueda(options));
+            } catch (error) {
+                console.error('Error al buscar perros:', error);
+                setOptions([]);
             }
-            buscarCursos();
-        } catch (error) {
-            console.error('Error al buscar cursos:', error);
-        }
-        }
-    }, [inputValue, perro]);
+        };
+
+        buscarPerros();
+    }, [inputValue, perro, onBuscar]);
 
     return (
         <Autocomplete
             options={options}
-            renderInput={(params) => 
-            <div>
-                <Typography variant="h6">{titulo}</Typography>
-                <TextField {...params}  placeholder='Nombre del Perro' />
-                </div>}
-            onInputChange={(event, value) => {setInputValue(value)}}
-            getOptionLabel={(option) => option.nombre}
+            getOptionLabel={(option) => option.nombre || ''}
+            renderInput={(params) => (
+                <div>
+                    <Typography variant="h6">{titulo}</Typography>
+                    <TextField {...params} placeholder="Nombre del Perro" />
+                </div>
+            )}
+            onInputChange={(event, value) => {
+                setInputValue((prev) => ({ ...prev, nombre: value }));
+            }}
             onChange={(event, value) => {
                 dispatch(setPerroSeleccionado(value));
             }}
-            sx={{width: '50%'}}
+            sx={{ width: '50%' }}
         />
-    )
+    );
 }
