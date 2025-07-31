@@ -2,6 +2,8 @@ import {Routes, Route} from 'react-router-dom'
 import {Registrar} from '../pages/Registrar'
 import {Notificaciones} from '../pages/Notificaciones'
 import {Detalles} from '../pages/Detalles'
+import {Usuarios} from '../pages/Usuarios'
+
 import {DashboardLayout} from '../../general/layouts/DashboardLayout'
 export const EspecialRoutes = ()=>{
 
@@ -11,6 +13,7 @@ export const EspecialRoutes = ()=>{
             <Route path="Registro" element={<Registrar/>} />
             <Route path="Detalles" element={<Detalles/>} />
             <Route path="Notificaciones" element={<Notificaciones/>} />
+            <Route path="Usuarios" element={<Usuarios/>} />
         </Route>
     </Routes>
     )
