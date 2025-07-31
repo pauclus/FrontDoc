@@ -36,4 +36,63 @@ buscarPerros: async ({ nombre, dueñoId, raza, edad, color, comportamiento, tama
         });
     },
 
+    crearPerro: async(perro, idUsuario)=>{
+        const response = await fetch(`${baseUrl}/api/perros/crear?idUsuario=${idUsuario}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(perro)
+        });
+        if (!response.ok) throw new Error('Error al crear perro');
+        return response.json();
+      },
+      
+       guardarPerro: async(perro) =>{
+        const response = await fetch(`${baseUrl}/api/perros/guardar`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(perro)
+        });
+        if (!response.ok) throw new Error('Error al guardar perro');
+        return response.json();
+      },
+      
+       actualizarPerro: async(idPerro, perro)=>{
+        const response = await fetch(`${baseUrl}/api/perros/${idPerro}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(perro)
+        });
+        if (!response.ok) throw new Error('Error al actualizar perro');
+        return response.json();
+      },
+      
+       obtenerPerroPorId: async(idPerro)=>{
+        const response = await fetch(`${baseUrl}/api/perros/${idPerro}`);
+        if (!response.ok) throw new Error('Perro no encontrado');
+        return response.json();
+      },
+      
+       obtenerTodosLosPerros: async()=>{
+        const response = await fetch(`${baseUrl}/api/perros`);
+        if (!response.ok) throw new Error('Error al obtener perros');
+        return response.json();
+      },
+      
+       obtenerPerrosPorUsuario: async(idUsuario)=>{
+        const response = await fetch(`${baseUrl}/api/perros/usuario/${idUsuario}`);
+        if (!response.ok) throw new Error('Error al obtener perros por usuario');
+        return response.json();
+      },
+      
+       contarPerrosPorRazas: async(razas) =>{
+        const response = await fetch(`${baseUrl}/api/perros/por-raza`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(razas)
+        });
+        if (!response.ok) throw new Error('Error al contar perros por raza');
+        return response.json();
+      }
+      
+
 }
